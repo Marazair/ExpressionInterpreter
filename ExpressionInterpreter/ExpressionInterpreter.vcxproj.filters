@@ -68,5 +68,11 @@
     <ClInclude Include="divide.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GreaterThan.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lessthan.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
