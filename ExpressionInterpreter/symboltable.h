@@ -4,6 +4,7 @@ public:
 	SymbolTable() {}
 	void insert(string variable, double value);
 	double lookUp(string variable) const;
+	void reset();
 private:
 	struct Symbol
 	{

@@ -26,6 +26,8 @@ int main()
 		in >> comma;
 		parseAssignments(in);
 		cout << "Value = " << expression->evaluate() << endl;
+
+		symbolTable.reset();
 	}
 
 	in.close();
