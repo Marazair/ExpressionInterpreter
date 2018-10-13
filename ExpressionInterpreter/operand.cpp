@@ -12,24 +12,24 @@ using namespace std;
 #include "literal.h"
 #include "parse.h"
 
-Expression* Operand::parse()
+Expression* Operand::parse(istream &in)
 {
 	char paren;
 	double value;
 
-	cin >> ws;
-	if (isdigit(cin.peek()))
+	in >> ws;
+	if (isdigit(in.peek()))
 	{
-		cin >> value;
+		in >> value;
 		Expression* literal = new Literal(value);
 		return literal;
 	}
-	if (cin.peek() == '(')
+	if (in.peek() == '(')
 	{
-		cin >> paren;
-		return SubExpression::parse();
+		in >> paren;
+		return SubExpression::parse(in);
 	}
 	else
-		return new Variable(parseName());
+		return new Variable(parseName(in));
 	return 0;
 }

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
 using namespace std;
@@ -10,30 +11,36 @@ using namespace std;
 
 SymbolTable symbolTable;
 
-void parseAssignments();
+void parseAssignments(ifstream &in);
 
 int main()
 {
+	ifstream in("input.txt");
 	Expression* expression;
 	char paren, comma;
-	cout << "Enter expression: ";
-	cin >> paren;
-	expression = SubExpression::parse();
-	cin >> comma;
-	parseAssignments();
-	cout << "Value = " << expression->evaluate() << endl;
+
+	while (!in.eof())
+	{
+		in >> paren;
+		expression = SubExpression::parse(in);
+		in >> comma;
+		parseAssignments(in);
+		cout << "Value = " << expression->evaluate() << endl;
+	}
+
+	in.close();
 	return 0;
 }
 
-void parseAssignments()
+void parseAssignments(ifstream &in)
 {
 	char assignop, delimiter;
 	string variable;
 	double value;
 	do
 	{
-		variable = parseName();
-		cin >> ws >> assignop >> value >> delimiter;
+		variable = parseName(in);
+		in >> ws >> assignop >> value >> delimiter;
 		symbolTable.insert(variable, value);
 	} while (delimiter == ',');
 }

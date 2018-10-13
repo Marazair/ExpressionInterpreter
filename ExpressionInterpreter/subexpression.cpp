@@ -33,30 +33,30 @@ SubExpression::SubExpression(Expression* left, Expression* middle, Expression* r
 	this->middle = middle;
 	this->right = right;
 }
-Expression* SubExpression::parse()
+Expression* SubExpression::parse(istream &in)
 {
 	Expression* left;
 	Expression* middle;
 	Expression* right;
 	char operation, paren, query;
 
-	left = Operand::parse();
-	cin >> operation;
+	left = Operand::parse(in);
+	in >> operation;
 	switch (operation) 
 	{
 	case ':':
-		middle = Operand::parse();
-		cin >> query;
-		right = Operand::parse();
-		cin >> paren;
+		middle = Operand::parse(in);
+		in >> query;
+		right = Operand::parse(in);
+		in >> paren;
 		return new Conditional(left, middle, right);
 	case '!':
-		cin >> paren;
+		in >> paren;
 		return new Not(left);
 	}
 
-	right = Operand::parse();
-	cin >> paren;
+	right = Operand::parse(in);
+	in >> paren;
 
 	switch (operation)
 	{

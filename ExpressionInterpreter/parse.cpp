@@ -5,15 +5,15 @@ using namespace std;
 
 #include "parse.h"
 
-string parseName()
+string parseName(istream &in)
 {
 	char alnum;
 	string name = "";
 
-	cin >> ws;
-	while (isalnum(cin.peek()))
+	in >> ws;
+	while (isalnum(in.peek()))
 	{
-		cin >> alnum;
+		in >> alnum;
 		name += alnum;
 	}
 	return name;
