@@ -19,15 +19,16 @@ int main()
 	Expression* expression;
 	char paren, comma;
 
+	in >> paren;
 	while (!in.eof())
 	{
-		in >> paren;
 		expression = SubExpression::parse(in);
 		in >> comma;
 		parseAssignments(in);
 		cout << "Value = " << expression->evaluate() << endl;
 
 		symbolTable.reset();
+		in >> paren;
 	}
 
 	in.close();
