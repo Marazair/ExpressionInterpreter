@@ -15,9 +15,20 @@ void parseAssignments(ifstream &in);
 
 int main()
 {
-	ifstream in("input.txt");
+	ifstream in;
+	ofstream out;
+	string inFileName;
+	string outFileName;
 	Expression* expression;
-	char paren, comma;
+	char paren, comma, exit;
+
+	cout << "Input file name: ";
+	cin >> inFileName;
+	in = ifstream(inFileName);
+
+	cout << "Output file name: ";
+	cin >> outFileName;
+	out = ofstream(outFileName);
 
 	in >> paren;
 	while (!in.eof())
@@ -25,11 +36,14 @@ int main()
 		expression = SubExpression::parse(in);
 		in >> comma;
 		parseAssignments(in);
-		cout << "Value = " << expression->evaluate() << endl;
+		out << "Value = " << expression->evaluate() << endl;
 
 		symbolTable.reset();
 		in >> paren;
 	}
+
+	cout << "Evaluation complete. Output written to file." << endl;
+	system("pause");
 
 	in.close();
 	return 0;
