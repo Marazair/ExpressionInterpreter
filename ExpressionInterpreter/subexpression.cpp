@@ -10,6 +10,8 @@ using namespace std;
 #include "divide.h"
 #include "lessthan.h"
 #include "greaterthan.h"
+#include "or.h"
+#include "and.h"
 
 SubExpression::SubExpression(Expression* left, Expression* right)
 {
@@ -41,6 +43,10 @@ Expression* SubExpression::parse()
 		return new LessThan(left, right);
 	case '>':
 		return new GreaterThan(left, right);
+	case '|':
+		return new Or(left, right);
+	case '&':
+		return new And(left, right);
 	}
 	return 0;
 }
