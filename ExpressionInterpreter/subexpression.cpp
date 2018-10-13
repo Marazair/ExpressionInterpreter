@@ -12,6 +12,14 @@ using namespace std;
 #include "greaterthan.h"
 #include "or.h"
 #include "and.h"
+#include "conditional.h"
+#include "not.h"
+#include "equals.h"
+
+SubExpression::SubExpression(Expression * left)
+{
+	this->left = left;
+}
 
 SubExpression::SubExpression(Expression* left, Expression* right)
 {
@@ -19,16 +27,37 @@ SubExpression::SubExpression(Expression* left, Expression* right)
 	this->right = right;
 }
 
+SubExpression::SubExpression(Expression* left, Expression* middle, Expression* right)
+{
+	this->left = left;
+	this->middle = middle;
+	this->right = right;
+}
 Expression* SubExpression::parse()
 {
 	Expression* left;
+	Expression* middle;
 	Expression* right;
-	char operation, paren;
+	char operation, paren, query;
 
 	left = Operand::parse();
 	cin >> operation;
+	switch (operation) 
+	{
+	case ':':
+		middle = Operand::parse();
+		cin >> query;
+		right = Operand::parse();
+		cin >> paren;
+		return new Conditional(left, middle, right);
+	case '!':
+		cin >> paren;
+		return new Not(left);
+	}
+
 	right = Operand::parse();
 	cin >> paren;
+
 	switch (operation)
 	{
 	case '+':
@@ -47,6 +76,8 @@ Expression* SubExpression::parse()
 		return new Or(left, right);
 	case '&':
 		return new And(left, right);
+	case '=':
+		return new Equals(left, right);
 	}
 	return 0;
 }

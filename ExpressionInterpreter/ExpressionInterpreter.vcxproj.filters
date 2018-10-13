@@ -80,5 +80,14 @@
     <ClInclude Include="and.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="conditional.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="not.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="equals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

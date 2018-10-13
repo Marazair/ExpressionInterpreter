@@ -124,12 +124,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="and.h" />
+    <ClInclude Include="conditional.h" />
     <ClInclude Include="divide.h" />
+    <ClInclude Include="equals.h" />
     <ClInclude Include="expression.h" />
     <ClInclude Include="GreaterThan.h" />
     <ClInclude Include="lessthan.h" />
     <ClInclude Include="literal.h" />
     <ClInclude Include="minus.h" />
+    <ClInclude Include="not.h" />
     <ClInclude Include="operand.h" />
     <ClInclude Include="or.h" />
     <ClInclude Include="parse.h" />
