@@ -33,10 +33,19 @@ int main()
 	in >> paren;
 	while (!in.eof())
 	{
-		expression = SubExpression::parse(in);
-		in >> comma;
-		parseAssignments(in);
-		out << "Value = " << expression->evaluate() << endl;
+		try {
+			expression = SubExpression::parse(in);
+			in >> comma;
+			parseAssignments(in);
+			out << "Value = " << expression->evaluate() << endl;
+		}
+		catch (exception e) {
+			out << e.what() << endl;
+			in.ignore('\n');
+		}
+		catch (const char* message) {
+			out << "Problem with line: " << message << endl;
+		}
 
 		symbolTable.reset();
 		in >> paren;

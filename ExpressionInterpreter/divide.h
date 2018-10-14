@@ -7,6 +7,11 @@ public:
 	}
 	int evaluate()
 	{
-		return left->evaluate() / right->evaluate();
+		int x = left->evaluate();
+		int y = right->evaluate();
+		if (y != 0)
+			return x / y;
+		else
+			throw "Divide by zero.";
 	}
 };

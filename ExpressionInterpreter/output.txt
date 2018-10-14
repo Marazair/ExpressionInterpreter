@@ -7,3 +7,4 @@ Value = 5
 Value = 1
 Value = 0
 Value = 3
+Problem with line: Divide by zero.
