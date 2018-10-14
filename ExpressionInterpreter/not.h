@@ -5,7 +5,7 @@ public:
 		SubExpression(left)
 	{
 	}
-	double evaluate()
+	int evaluate()
 	{
 		if (left->evaluate() > 0)
 			return 0;

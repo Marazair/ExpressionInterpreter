@@ -15,7 +15,7 @@ using namespace std;
 Expression* Operand::parse(istream &in)
 {
 	char paren;
-	double value;
+	int value;
 
 	in >> ws;
 	if (isdigit(in.peek()))
