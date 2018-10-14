@@ -42,6 +42,7 @@ Expression* SubExpression::parse(istream &in)
 
 	left = Operand::parse(in);
 	in >> operation;
+
 	switch (operation) 
 	{
 	case ':':
